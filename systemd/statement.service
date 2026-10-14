@@ -1,0 +1,19 @@
+[Unit]
+Description=statement Banking Service
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+User=fake-service
+Group=fake-service
+Environment="NAME=statement"
+Environment="MESSAGE=statement Service"
+Environment="LISTEN_ADDR=0.0.0.0:9093"
+Environment="LOG_LEVEL=info"
+
+ExecStart=/usr/local/bin/fake-service
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

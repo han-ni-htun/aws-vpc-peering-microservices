@@ -1,0 +1,30 @@
+# Unit section: describes the service and its startup dependencies.
+[Unit]
+Description=Customer Profile Banking Service
+After=network-online.target
+Wants=network-online.target
+
+# Service section: defines how the application runs.
+[Service]
+Type=simple
+
+# Run the application under the dedicated non-root Linux user.
+User=fake-service
+Group=fake-service
+
+# Configure the fake-service application.
+Environment="NAME=Customer-Profile"
+Environment="MESSAGE=Customer Profile Service"
+Environment="LISTEN_ADDR=0.0.0.0:9091"
+Environment="LOG_LEVEL=info"
+
+# Start the verified Linux AMD64 executable.
+ExecStart=/usr/local/bin/fake-service
+
+# Restart the service automatically if it fails.
+Restart=on-failure
+RestartSec=5s
+
+# Installation section: enables automatic startup during normal boot.
+[Install]
+WantedBy=multi-user.target

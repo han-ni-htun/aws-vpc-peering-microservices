@@ -1,0 +1,17 @@
+# Downloaded third-party application binaries
+fake-service
+*.bin
+
+# SSH private keys and other sensitive material
+*.pem
+*.key
+
+# Local macOS files
+.DS_Store
+
+# Terraform local state and secrets (for future use)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
